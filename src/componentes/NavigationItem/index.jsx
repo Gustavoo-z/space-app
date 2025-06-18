@@ -14,7 +14,7 @@ const StyledLi = styled.li`
 
 export default function NavigationItem({ ...props }) {
     return (
-        <StyledLi {...props}>
+        <StyledLi isActive={props.isActive}>
             <img 
                 src={props.isActive ? props.iconActive : props.iconInactive} 
                 alt={props.label}                

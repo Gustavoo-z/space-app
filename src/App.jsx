@@ -1,6 +1,7 @@
 import { styled } from 'styled-components';
 import Header from './componentes/Header';
 import Sidebar from './componentes/Sidebar';
+import Banner from './componentes/Banner';
 
 const FundoGradiente = styled.div`
   background: linear-gradient(174.61deg, #041833 4.16%, #04244F 48%, #154580 96.76%);
@@ -8,12 +9,20 @@ const FundoGradiente = styled.div`
   min-height: 100vh;
 `
 
+const StyledDivBanner = styled.div`
+  display: flex;
+  margin-right: 20px;
+`
+
 function App() {
   return (
     <>
       <FundoGradiente>
         <Header />
-        <Sidebar />
+          <StyledDivBanner>
+            <Sidebar />
+            <Banner img="/src/assets/banner.png" text="A galeria mais completa de fotos do espaço!" />
+          </StyledDivBanner>
       </FundoGradiente>
     </>
   )
