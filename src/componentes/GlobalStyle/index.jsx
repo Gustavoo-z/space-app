@@ -1,10 +1,22 @@
 import { createGlobalStyle } from "styled-components";
 
+import GhandhiSansBold from "./Fonts/GandhiSans-Bold.otf";
+import GhandhiSansRegular from "./Fonts/GandhiSans-Regular.otf";
+
 const GlobalStyle = createGlobalStyle`
 
+@font-face {
+  font-family: 'GhandhiSansRegular';
+  src: local('Ghandhi Sans Regular'), local('GhandhiSansRegular'), url(${GhandhiSansRegular}) format('opentype');
+}
+@font-face {
+  font-family: 'GhandhiSansBold';
+  src: local('Ghandhi Sans Bold'), local('GhandhiSansBold'), url(${GhandhiSansBold}) format('opentype');
+}
 html {
   line-height: 1.15; 
-  -webkit-text-size-adjust: 100%; 
+  -webkit-text-size-adjust: 100%;
+  font-family: GhandhiSansRegular;  
 }
 body {
   margin: 0;
@@ -144,6 +156,12 @@ template {
 }
 [hidden] {
   display: none;
+}
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 `
