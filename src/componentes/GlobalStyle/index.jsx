@@ -164,6 +164,6 @@ ol {
   list-style: none;
 }
 
-`
+`;
 
 export default GlobalStyle;
