@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import Tags from "../Tags";
 import Title from "../Title";
+import ImageGallery from "../ImageGallery";
+
+import populares from "./populares.json";
+import ImagesPopulares from "../ImagesPopulares";
 
 const GalleryDiv = styled.div`
   display: flex;
@@ -12,19 +16,34 @@ const GallerySection = styled.section`
   flex-grow: 1;
 `;
 
-const PopularesSection = styled.section``;
+const ContainerImages = styled.section`
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+`;
 
-export default function Gallery() {
+export default function Gallery({ fotos = [], aoFotoSelecionada }) {
   return (
     <>
       <Tags />
       <GalleryDiv>
         <GallerySection>
           <Title>Navegue pela galeria</Title>
+          <ContainerImages>
+            {fotos.map((foto) => (
+              <ImageGallery
+                aoZoomSolicitado={aoFotoSelecionada}
+                key={foto.id}
+                foto={foto}
+              />
+            ))}
+          </ContainerImages>
         </GallerySection>
-        <PopularesSection>
+        <section>
           <Title alinhamento="center">Populares</Title>
-        </PopularesSection>
+          <ImagesPopulares populares={populares} />
+        </section>
       </GalleryDiv>
     </>
   );

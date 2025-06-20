@@ -3,7 +3,7 @@ import NavigationItem from "../NavigationItem";
 import menuItems from "./menuItems";
 
 const StyledSidebar = styled.aside`
-  width: 250px;
+  min-width: 240px;
   height: 300px;
 `;
 
