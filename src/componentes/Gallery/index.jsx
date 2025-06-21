@@ -23,7 +23,11 @@ const ContainerImages = styled.section`
   gap: 20px;
 `;
 
-export default function Gallery({ fotos = [], aoFotoSelecionada }) {
+export default function Gallery({
+  fotos = [],
+  aoFotoSelecionada,
+  toggleImage,
+}) {
   return (
     <>
       <Tags />
@@ -34,6 +38,7 @@ export default function Gallery({ fotos = [], aoFotoSelecionada }) {
             {fotos.map((foto) => (
               <ImageGallery
                 aoZoomSolicitado={aoFotoSelecionada}
+                toggleImage={toggleImage}
                 key={foto.id}
                 foto={foto}
               />

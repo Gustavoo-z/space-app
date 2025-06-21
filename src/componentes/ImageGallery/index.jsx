@@ -45,6 +45,7 @@ export default function ImageGallery({
   foto,
   expandida = false,
   aoZoomSolicitado,
+  toggleImage,
 }) {
   return (
     <Figure $expandida={expandida} id={`foto-${foto.id}`}>
@@ -53,8 +54,15 @@ export default function ImageGallery({
         <h3>{foto.titulo}</h3>
         <Footer>
           <h4>{foto.fonte}</h4>
-          <IconButton>
-            <img src="/icones/favorito.png" alt="Icone de favorito" />
+          <IconButton onClick={() => toggleImage(foto)}>
+            <img
+              src={
+                foto.favorita
+                  ? "/icones/favorito-ativo.png"
+                  : "/icones/favorito.png"
+              }
+              alt="Icone de favorito"
+            />
           </IconButton>
           {!expandida && (
             <IconButton

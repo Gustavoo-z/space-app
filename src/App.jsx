@@ -38,6 +38,26 @@ export default function App() {
   const [fotosGaleria, setFotosGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
 
+  function toggleImage(foto) {
+    if (foto.id === fotoSelecionada?.id) {
+      setFotoSelecionada({
+        ...fotoSelecionada,
+        favorita: !fotoSelecionada.favorita,
+      });
+    }
+    setFotosGaleria(
+      fotosGaleria.map((fotoDaGaleria) => {
+        return {
+          ...fotoDaGaleria,
+          favorita:
+            fotoDaGaleria.id === foto.id
+              ? !foto.favorita
+              : fotoDaGaleria.favorita,
+        };
+      })
+    );
+  }
+
   return (
     <>
       <FundoGradiente>
@@ -52,6 +72,7 @@ export default function App() {
               />
               <Gallery
                 aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
+                toggleImage={toggleImage}
                 fotos={fotosGaleria}
               />
             </GalleryDiv>
@@ -60,6 +81,7 @@ export default function App() {
         <ModalZoom
           foto={fotoSelecionada}
           aoFechar={() => setFotoSelecionada(null)}
+          toggleImage={toggleImage}
         />
       </FundoGradiente>
     </>

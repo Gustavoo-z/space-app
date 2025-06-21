@@ -29,14 +29,18 @@ const StyledDialog = styled.dialog`
   }
 `;
 
-export default function ModalZoom({ foto, aoFechar }) {
+export default function ModalZoom({ foto, aoFechar, toggleImage }) {
   return (
     <>
       {foto && (
         <>
           <Overlay />
           <StyledDialog open={!!foto} onClose={aoFechar}>
-            <ImageGallery foto={foto} expandida={true} />
+            <ImageGallery
+              foto={foto}
+              expandida={true}
+              toggleImage={toggleImage}
+            />
             <form method="dialog">
               <IconButton formMethod="dialog">
                 <img src="/icones/fechar.png" alt="Icone de fechar" />
