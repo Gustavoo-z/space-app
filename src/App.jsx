@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import fotos from "./fotos.json";
 import ModalZoom from "./componentes/ModalZoom";
+import Footer from "./componentes/Footer";
 
 const FundoGradiente = styled.div`
   background: linear-gradient(
@@ -83,6 +84,7 @@ export default function App() {
           aoFechar={() => setFotoSelecionada(null)}
           toggleImage={toggleImage}
         />
+        <Footer />
       </FundoGradiente>
     </>
   );

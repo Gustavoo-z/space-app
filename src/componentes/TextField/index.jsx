@@ -22,6 +22,10 @@ const StyledInput = styled.input`
   &::placeholder {
     color: #d9d9d9;
   }
+  &:focus {
+    outline: none;
+    transform: scale(1.005);
+  }
 `;
 
 const ImgSearch = styled.img`

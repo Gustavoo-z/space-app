@@ -8,6 +8,11 @@ const StyledHeader = styled.header`
   margin: 0 20px;
   img {
     max-width: 212px;
+    &:hover {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+      cursor: pointer;
+    }
   }
 `;
 

@@ -19,8 +19,11 @@ const Tag = styled.button`
   font-size: 24px;
   border-radius: 10px;
   padding: 8px;
-  border: ${(props) => (props.isActive ? "1px solid #c98cf1" : "none")};
+  border: none;
   cursor: pointer;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export default function Tags() {
@@ -28,9 +31,7 @@ export default function Tags() {
     <TagsDiv>
       <TextTags>Busque por tags:</TextTags>
       {arrayTags.map((tag) => (
-        <Tag isActive={tag.id === 1} key={tag.id}>
-          {tag.titulo}
-        </Tag>
+        <Tag key={tag.id}>{tag.titulo}</Tag>
       ))}
     </TagsDiv>
   );

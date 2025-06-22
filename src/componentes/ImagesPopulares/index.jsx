@@ -9,6 +9,11 @@ const ImagesPopularesDiv = styled.div`
 
   & img {
     border-radius: 20px;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.03);
+      transition: transform 0.3s ease-in-out;
+    }
   }
 `;
 
@@ -22,6 +27,9 @@ const ButtonPopulares = styled.button`
   padding: 8px;
   border: 1px solid #c98cf1;
   cursor: pointer;
+  &:hover {
+    transform: scale(1.03);
+  }
 `;
 
 export default function ImagesPopulares({ populares }) {
