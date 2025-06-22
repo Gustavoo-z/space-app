@@ -16,11 +16,11 @@ const StyledHeader = styled.header`
   }
 `;
 
-export default function Header() {
+export default function Header({ searchPhotos }) {
   return (
     <StyledHeader>
       <img src="/public/imagens/logo.png" alt="Logo Space-App" />
-      <TextField />
+      <TextField searchPhotos={searchPhotos} />
     </StyledHeader>
   );
 }

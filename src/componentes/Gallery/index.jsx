@@ -27,10 +27,11 @@ export default function Gallery({
   fotos = [],
   aoFotoSelecionada,
   toggleImage,
+  searchForTag,
 }) {
   return (
     <>
-      <Tags />
+      <Tags searchForTag={searchForTag} />
       <GalleryDiv>
         <GallerySection>
           <Title>Navegue pela galeria</Title>

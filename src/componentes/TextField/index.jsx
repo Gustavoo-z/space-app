@@ -36,10 +36,14 @@ const ImgSearch = styled.img`
   height: 38px;
 `;
 
-export default function TextField() {
+export default function TextField({ searchPhotos }) {
+  function aoDigitar(e) {
+    searchPhotos(e.target.value);
+  }
+
   return (
     <StyledDiv>
-      <StyledInput placeholder="O que você procura?" />
+      <StyledInput onChange={aoDigitar} placeholder="O que você procura?" />
       <ImgSearch src={search} alt="Ícone de pesquisa" />
     </StyledDiv>
   );

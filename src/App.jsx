@@ -59,11 +59,26 @@ export default function App() {
     );
   }
 
+  function searchPhotos(text) {
+    const fotosFiltradas = fotos.filter((foto) => {
+      return foto.titulo.toLowerCase().includes(text.toLowerCase());
+    });
+    setFotosGaleria(fotosFiltradas);
+  }
+
+  function searchForTag(tagId) {
+    const fotosFiltradas = fotos.filter((foto) => {
+      if (tagId === 0) return true;
+      return foto.tagId === tagId;
+    });
+    setFotosGaleria(fotosFiltradas);
+  }
+
   return (
     <>
       <FundoGradiente>
         <AppContainer>
-          <Header />
+          <Header searchPhotos={searchPhotos} />
           <StyledDivBanner>
             <Sidebar />
             <GalleryDiv>
@@ -75,6 +90,7 @@ export default function App() {
                 aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
                 toggleImage={toggleImage}
                 fotos={fotosGaleria}
+                searchForTag={searchForTag}
               />
             </GalleryDiv>
           </StyledDivBanner>

@@ -19,19 +19,41 @@ const Tag = styled.button`
   font-size: 24px;
   border-radius: 10px;
   padding: 8px;
-  border: none;
+  border: ${({ isActive }) => (isActive ? "1px solid #c98cf1" : "none")};
   cursor: pointer;
   &:hover {
     transform: scale(1.05);
   }
 `;
 
-export default function Tags() {
+export default function Tags({ searchForTag }) {
+  function selectButton(tag) {
+    console.log(tag.id);
+    arrayTags.forEach((item) => {
+      if (item.id === tag.id) {
+        item.active = true;
+      } else {
+        item.active = false;
+      }
+    });
+  }
+
+  function changeCategory(tag) {
+    selectButton(tag);
+    searchForTag(tag.id);
+  }
+
   return (
     <TagsDiv>
       <TextTags>Busque por tags:</TextTags>
       {arrayTags.map((tag) => (
-        <Tag key={tag.id}>{tag.titulo}</Tag>
+        <Tag
+          isActive={tag.active}
+          onClick={() => changeCategory(tag)}
+          key={tag.id}
+        >
+          {tag.titulo}
+        </Tag>
       ))}
     </TagsDiv>
   );
