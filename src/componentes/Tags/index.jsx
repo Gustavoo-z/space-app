@@ -26,7 +26,7 @@ const Tag = styled.button`
   }
 `;
 
-export default function Tags({ searchForTag }) {
+export default function Tags({ setSearchTagId }) {
   function selectButton(tag) {
     console.log(tag.id);
     arrayTags.forEach((item) => {
@@ -40,7 +40,7 @@ export default function Tags({ searchForTag }) {
 
   function changeCategory(tag) {
     selectButton(tag);
-    searchForTag(tag.id);
+    setSearchTagId(tag.id);
   }
 
   return (

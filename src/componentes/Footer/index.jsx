@@ -18,6 +18,12 @@ const StyledFooter = styled.footer`
 const DivSociais = styled.div`
   display: flex;
   gap: 40px;
+  img {
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 export default function Footer() {

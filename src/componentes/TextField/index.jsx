@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import search from "./search.png";
+import searchIcon from "./search.png";
 
 const StyledDiv = styled.div`
   position: relative;
@@ -36,15 +36,15 @@ const ImgSearch = styled.img`
   height: 38px;
 `;
 
-export default function TextField({ searchPhotos }) {
+export default function TextField({ setSearchText }) {
   function aoDigitar(e) {
-    searchPhotos(e.target.value);
+    setSearchText(e.target.value);
   }
 
   return (
     <StyledDiv>
       <StyledInput onChange={aoDigitar} placeholder="O que você procura?" />
-      <ImgSearch src={search} alt="Ícone de pesquisa" />
+      <ImgSearch src={searchIcon} alt="Ícone de pesquisa" />
     </StyledDiv>
   );
 }

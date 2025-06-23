@@ -11,6 +11,11 @@ const StyledLi = styled.li`
   display: flex;
   align-items: center;
   gap: 22px;
+  &:hover {
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+  }
 `;
 
 export default function NavigationItem({ ...props }) {

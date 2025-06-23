@@ -3,7 +3,7 @@ import Header from "./componentes/Header";
 import Sidebar from "./componentes/Sidebar";
 import Banner from "./componentes/Banner";
 import Gallery from "./componentes/Gallery";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import fotos from "./fotos.json";
 import ModalZoom from "./componentes/ModalZoom";
@@ -38,6 +38,19 @@ const GalleryDiv = styled.div`
 export default function App() {
   const [fotosGaleria, setFotosGaleria] = useState(fotos);
   const [fotoSelecionada, setFotoSelecionada] = useState(null);
+  const [searchText, setSearchText] = useState("");
+  const [searchTagId, setSearchTagId] = useState(0);
+
+  useEffect(() => {
+    const filteredPhotos = fotos.filter((foto) => {
+      const filterForTag = !searchTagId || foto.tagId === searchTagId;
+      const filterForText =
+        !searchText ||
+        foto.titulo.toLowerCase().includes(searchText.toLowerCase());
+      return filterForTag && filterForText;
+    });
+    setFotosGaleria(filteredPhotos);
+  }, [searchText, searchTagId]);
 
   function toggleImage(foto) {
     if (foto.id === fotoSelecionada?.id) {
@@ -59,26 +72,11 @@ export default function App() {
     );
   }
 
-  function searchPhotos(text) {
-    const fotosFiltradas = fotos.filter((foto) => {
-      return foto.titulo.toLowerCase().includes(text.toLowerCase());
-    });
-    setFotosGaleria(fotosFiltradas);
-  }
-
-  function searchForTag(tagId) {
-    const fotosFiltradas = fotos.filter((foto) => {
-      if (tagId === 0) return true;
-      return foto.tagId === tagId;
-    });
-    setFotosGaleria(fotosFiltradas);
-  }
-
   return (
     <>
       <FundoGradiente>
         <AppContainer>
-          <Header searchPhotos={searchPhotos} />
+          <Header setSearchText={setSearchText} />
           <StyledDivBanner>
             <Sidebar />
             <GalleryDiv>
@@ -90,7 +88,7 @@ export default function App() {
                 aoFotoSelecionada={(foto) => setFotoSelecionada(foto)}
                 toggleImage={toggleImage}
                 fotos={fotosGaleria}
-                searchForTag={searchForTag}
+                setSearchTagId={setSearchTagId}
               />
             </GalleryDiv>
           </StyledDivBanner>
